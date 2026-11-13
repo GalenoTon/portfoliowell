@@ -54,6 +54,34 @@ label,.lbl{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:upp
 .card .more{margin-top:auto;display:flex;align-items:center;gap:12px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#a3a3a3}
 .arrow{width:36px;height:36px;border:1px solid rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s}
 .card:hover .arrow{background:#f24405;border-color:#f24405}
+.projects-section{position:relative;overflow:hidden;padding:clamp(88px,11vw,144px) 0;background:radial-gradient(ellipse at 85% 12%,rgba(242,68,5,.09),transparent 34%),#050505}
+.projects-intro{max-width:680px;margin-bottom:clamp(56px,8vw,96px)}
+.projects-copy{max-width:560px;margin-top:24px}
+.project-group{margin-top:clamp(48px,7vw,72px)}
+.project-switch{display:inline-flex;gap:6px;padding:6px;margin-bottom:32px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.025)}
+.project-type-button{padding:14px 20px;border:1px solid transparent;background:transparent;color:#9a9a9a;font:inherit;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .25s}
+.project-type-button:hover{color:#fff}
+.project-type-button[aria-pressed="true"]{border-color:rgba(242,68,5,.45);background:rgba(242,68,5,.1);color:#fff}
+.project-group-heading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:24px}
+.project-group-heading h3{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800;letter-spacing:-.04em}
+.project-group-heading p{color:#8a8a8a;font-size:13px;line-height:1.6}
+.project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.project-grid.professional{grid-template-columns:repeat(3,minmax(0,1fr))}
+.project-card{min-height:360px;position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:clamp(28px,3.2vw,40px);overflow:hidden;text-align:left;color:#fafafa;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.015) 55%),#080808;border:1px solid rgba(255,255,255,.09);font:inherit;cursor:pointer;transition:transform .35s,border-color .35s,background .35s}
+.project-card::after{content:'';position:absolute;inset:auto -20% -60% 35%;height:220px;background:radial-gradient(ellipse,rgba(242,68,5,.12),transparent 70%);opacity:0;transition:opacity .35s;pointer-events:none}
+.project-card:hover{transform:translateY(-5px);border-color:rgba(242,68,5,.48);background-color:#0b0b0b}
+.project-card:hover::after{opacity:1}
+.project-card-top{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.project-card-index{color:#f24405;font-size:12px;font-weight:800;letter-spacing:.2em}
+.project-card-mark{display:grid;place-items:center;width:38px;height:38px;border:1px solid rgba(255,255,255,.14);border-radius:50%;color:#a3a3a3;transition:all .3s}
+.project-card:hover .project-card-mark{color:#fff;border-color:#f24405;background:#f24405;transform:rotate(45deg)}
+.project-card-tag{color:#a3a3a3;font-size:10px;font-weight:700;letter-spacing:.17em;line-height:1.6;text-transform:uppercase}
+.project-card h4{font-size:clamp(1.55rem,2.5vw,2.15rem);font-weight:850;letter-spacing:-.045em;line-height:1.08;white-space:pre-line}
+.project-card-description{color:#a3a3a3;font-size:14px;font-weight:300;line-height:1.75}
+.project-card-result{margin-top:auto;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);width:100%;color:#f7b19a;font-size:11px;font-weight:700;letter-spacing:.12em;line-height:1.6;text-transform:uppercase}
+.project-card-result strong{color:#f24405}
+@media (max-width:900px){.project-grid.professional{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.project-grid,.project-grid.professional{grid-template-columns:1fr}.project-card{min-height:310px}.project-group-heading{align-items:flex-start;flex-direction:column;gap:8px}.project-switch{display:flex;width:100%}.project-type-button{flex:1;padding:13px 10px;font-size:10px}}
 .stat{background:#030303;padding:36px 24px;text-align:center}
 .stat b{display:block;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#f24405;letter-spacing:-.04em;line-height:1;margin-bottom:10px}
 .chip{flex:1 1 auto;padding:12px 16px;background:transparent;border:1px solid rgba(255,255,255,.1);color:#a3a3a3;font:inherit;font-size:13px;cursor:pointer;transition:all .3s;text-align:center;border-radius:0}
@@ -105,16 +133,50 @@ const services = [
   },
 ];
 
-const cases = [
+const academicProjects = [
   {
-    big: 'CASE', tag: 'PUC-Rio · Design Thinking', title: 'Colmeiah', headline: 'Plataforma de empreendedorismo universitário.',
-    desc: 'Projeto eleito o mais promissor da turma de Design Thinking. Conecta estudantes que querem empreender dentro da universidade.',
-    details: 'Concepção do produto, PRD e documentação, do problema ao desenho da plataforma.'
+    big: '2º', tag: "Case financeiro · L'Oréal Finance Games · PUC-Rio",
+    title: "L'Oréal Finance Games",
+    headline: 'Estratégia para fortalecer a resiliência financeira da empresa após uma falha crítica na comunicação de contratos assinados.',
+    desc: 'Em equipe, desenvolvemos uma resposta estratégica para reduzir a exposição financeira e proteger a continuidade das operações diante de uma falha de comunicação contratual.',
+    details: 'O trabalho exigiu conectar análise financeira, gestão de riscos e alinhamento entre áreas para estruturar medidas de contenção e prevenção.',
+    reflection: 'O case mostrou como a integração clara entre os departamentos jurídico e financeiro é essencial para mitigar perdas de capital em operações de grande porte.',
+    result: 'Conquista: 2º lugar no desafio'
   },
   {
-    big: 'CASE', tag: 'Sistema web · Mobile first', title: 'Catálogo\nNosso Stock', headline: 'Gestão de produtos pensada para o celular.',
-    desc: 'Sistema de catálogo com busca, cadastro, edição e exclusão de produtos, desenhado para uso no dia a dia pelo celular.',
-    details: 'Foco em rapidez de operação e em uma interface simples para quem atualiza o catálogo.'
+    big: 'VW', tag: 'Artigo de mercado · Estratégia global',
+    title: 'Análise Estratégica:\nVolkswagen',
+    headline: 'Estudo do posicionamento global, da alocação de recursos e da adaptação mercadológica da Volkswagen no setor automotivo.',
+    desc: 'Uma análise estratégica sobre como uma líder global ajusta suas decisões e prioridades diante de diferentes mercados e cenários econômicos.',
+    details: 'O artigo aborda a relação entre escolhas de posicionamento, direcionamento de recursos e capacidade de resposta às mudanças do setor.',
+    reflection: 'A análise evidencia como decisões macroeconômicas influenciam a adaptação da cadeia de abastecimento de uma empresa global.'
+  },
+];
+
+const professionalProjects = [
+  {
+    big: '01', tag: 'Freelance · 2023–atual · Desenvolvimento de produtos digitais',
+    title: 'Soluções digitais\nsob demanda',
+    headline: 'Sites, sistemas internos e automações construídos de ponta a ponta para necessidades reais de negócio.',
+    desc: 'Desenvolvimento de sites institucionais e aplicações web responsivas para empresas de médio e grande porte, com foco em desempenho e experiência do usuário.',
+    details: 'Responsável pelo levantamento de requisitos, arquitetura, desenvolvimento, testes e evolução dos produtos. Atuação com React, Vue.js, Node.js, APIs REST, bancos SQL e automações com n8n e Python.',
+    result: 'Atuação completa: do levantamento à evolução do produto'
+  },
+  {
+    big: '02', tag: 'QWST · 2021–2023 · Desenvolvimento full stack',
+    title: 'Plataforma de dashboards\ne gestão operacional',
+    headline: 'Evolução de sistemas web para visualização de indicadores e acompanhamento de operações.',
+    desc: 'Desenvolvimento e sustentação de uma plataforma utilizada por aproximadamente 3.000 usuários ativos, com atenção à estabilidade, integridade dos dados e continuidade do serviço.',
+    details: 'Implementação de regras de negócio, integrações e automações; melhorias de performance e usabilidade; e acompanhamento de uma solução de atendimento integrada. Tecnologias: JavaScript, Vue.js, APIs REST, AWS Cognito e DynamoDB.',
+    result: 'Escala: aproximadamente 3.000 usuários ativos'
+  },
+  {
+    big: '03', tag: 'QWST · 2020–2021 · Business Intelligence',
+    title: 'Análise de dados\ne automação de BI',
+    headline: 'Dados mais confiáveis e indicadores acessíveis para apoiar decisões de negócio.',
+    desc: 'Preparação e análise de dados de diferentes fontes, com dashboards interativos no Tableau para acompanhamento de KPIs e resultados.',
+    details: 'Atuação em coleta, tratamento, validação e cruzamento de dados com Excel e SQL, além do desenvolvimento de scripts em Python para automatizar rotinas de ETL e reduzir tarefas manuais.',
+    result: 'Eficiência: cerca de 5 horas semanais poupadas em tarefas manuais'
   },
 ];
 
@@ -187,7 +249,14 @@ function Modal({ data, onClose }) {
             <h3 className="text-3xl md:text-5xl font-black tracking-tighter uppercase leading-[0.95] text-white mb-6" style={{ whiteSpace: 'pre-line' }}>{data.title}</h3>
             <p className="text-zinc-300 text-lg font-light mb-6 leading-snug">{data.headline}</p>
             <p className="text-zinc-300 text-base leading-relaxed font-light mb-4">{data.desc}</p>
+            {data.result && <p className="text-sm font-bold tracking-wide text-[#f24405] mb-6">{data.result}</p>}
             <p className="text-zinc-400 text-sm leading-relaxed font-light mb-10">{data.details}</p>
+            {data.reflection && (
+              <div className="mb-10 border-l-2 border-[#f24405] pl-5">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#f24405] mb-3">Reflexão</p>
+                <p className="text-zinc-300 text-sm leading-relaxed font-light">{data.reflection}</p>
+              </div>
+            )}
             <a href="#contact" onClick={() => { click(); onClose(); }}
               className="inline-flex items-center gap-3 text-white text-xs font-bold tracking-[0.2em] uppercase hover:text-[#f24405] transition-colors pb-2 border-b border-white/20 hover:border-[#f24405]">
               Conversar sobre isso <ArrowRight size={14} />
@@ -219,11 +288,35 @@ const CardGrid = ({ items, onOpen }) => (
   </div>
 );
 
+const ProjectGrid = ({ items, onOpen, className = '' }) => (
+  <div className={`project-grid ${className}`.trim()}>
+    {items.map((project, index) => (
+      <button
+        key={project.title}
+        type="button"
+        className="project-card"
+        aria-label={`Ver detalhes do projeto ${project.title.replace('\n', ' ')}`}
+        onClick={() => { click(); onOpen(project); }}
+      >
+        <span className="project-card-top">
+          <span className="project-card-index">0{index + 1}</span>
+          <span className="project-card-mark"><ArrowUpRight size={17} /></span>
+        </span>
+        <span className="project-card-tag">{project.tag}</span>
+        <h4>{project.title}</h4>
+        <span className="project-card-description">{project.desc}</span>
+        {project.result && <span className="project-card-result"><strong>{project.result.split(':')[0]}:</strong>{project.result.slice(project.result.indexOf(':') + 1)}</span>}
+      </button>
+    ))}
+  </div>
+);
+
 /* ───────────── APP ───────────── */
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [modal, setModal] = useState(null);
+  const [projectType, setProjectType] = useState('academic');
   const [focus, setFocus] = useState('');
   const [sound, setSound] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -298,7 +391,7 @@ export default function App() {
     window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
-  const navItems = [['#expertise', 'Competências'], ['#work', 'Trajetória'], ['#contact', 'Contato']];
+  const navItems = [['#projects', 'Projetos'], ['#expertise', 'Competências'], ['#work', 'Trajetória'], ['#contact', 'Contato']];
 
   const content = (
     <div className={`aq-root ${isLoading ? '' : 'ready'}`}>
@@ -395,7 +488,7 @@ export default function App() {
         <section id="about" style={{ padding: '120px 0 80px', background: '#020202' }}>
           <div className="container-aq">
             <h2 className="h2 reveal" style={{ maxWidth: 900, marginBottom: 64 }}>
-              Do dado ao produto.<br /><span className="orange">Do código ao negócio.</span>
+              Perfil<br /><span className="orange">profissional.</span>
             </h2>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,300px),1fr))', gap: 'clamp(32px,7vw,80px)', marginBottom: 72, maxWidth: 1100, alignItems: 'start' }}>
               <img src="/foto.jpg" alt="Wellington Galeno" width="480" height="560" loading="lazy" decoding="async"
@@ -428,22 +521,54 @@ export default function App() {
         </section>
 
         {/* PROJETOS */}
-        {/* <section id="cases" style={{ padding: '100px 0 40px', background: '#020202' }}>
+        <section id="projects" className="projects-section">
           <div className="container-aq">
-            <div className="reveal" style={{ marginBottom: 56 }}>
-              <span className="pill">Projetos</span>
-              <h2 className="h2">O que já<br /><span className="orange">construí</span></h2>
+            <div className="projects-intro reveal">
+              <span className="pill">Portfólio</span>
+              <h2 className="h2">Projetos<br /><span className="orange">selecionados.</span></h2>
+              <p className="lead projects-copy">
+                Estudos acadêmicos e experiências profissionais que conectam análise, tecnologia e desafios reais de negócio.
+              </p>
             </div>
-            <CardGrid items={cases} onOpen={(it) => setModal(it)} />
+
+            <div className="project-group reveal">
+              <div className="project-switch" aria-label="Tipo de projeto">
+                <button
+                  type="button"
+                  className="project-type-button"
+                  aria-pressed={projectType === 'academic'}
+                  onClick={() => { click(); setProjectType('academic'); }}
+                >
+                  Projetos acadêmicos
+                </button>
+                <button
+                  type="button"
+                  className="project-type-button"
+                  aria-pressed={projectType === 'professional'}
+                  onClick={() => { click(); setProjectType('professional'); }}
+                >
+                  Projetos profissionais
+                </button>
+              </div>
+              <div className="project-group-heading">
+                <h3>{projectType === 'academic' ? 'Projetos acadêmicos' : 'Projetos profissionais'}</h3>
+                <p>{projectType === 'academic' ? 'Estratégia, mercado e visão de negócio' : 'Produtos digitais, dados e automação'}</p>
+              </div>
+              <ProjectGrid
+                items={projectType === 'academic' ? academicProjects : professionalProjects}
+                onOpen={setModal}
+                className={projectType === 'professional' ? 'professional' : ''}
+              />
+            </div>
           </div>
-        </section> */}
+        </section>
 
         {/* COMPETÊNCIAS */}
         <section id="expertise" style={{ padding: '100px 0', background: '#020202' }}>
           <div className="container-aq">
             <div className="reveal" style={{ marginBottom: 56 }}>
-              <span className="pill">O que levo para cada projeto</span>
-              <h2 className="h2">O que eu<br /><span className="orange">entrego</span></h2>
+              <span className="pill">Áreas de atuação</span>
+              <h2 className="h2">Competências<br /><span className="orange">profissionais.</span></h2>
             </div>
             <CardGrid items={services} onOpen={(it) => setModal(it)} />
           </div>
@@ -453,8 +578,8 @@ export default function App() {
         <section id="work" style={{ padding: '60px 0 100px', background: '#020202' }}>
           <div className="container-aq">
             <div className="reveal" style={{ marginBottom: 56 }}>
-              <span className="pill">Experiência aplicada</span>
-              <h2 className="h2">Minha<br /><span className="orange">trajetória</span></h2>
+              <span className="pill">Dados, desenvolvimento e automação</span>
+              <h2 className="h2">Experiência<br /><span className="orange">profissional.</span></h2>
             </div>
             <CardGrid items={trajectory} onOpen={(it) => setModal(it)} />
           </div>
@@ -464,7 +589,7 @@ export default function App() {
         <section id="education" style={{ padding: '60px 0 100px', background: '#020202' }}>
           <div className="container-aq">
             <div className="reveal" style={{ marginBottom: 64 }}>
-              <span className="pill">Formação</span>
+              <span className="pill">Percurso acadêmico</span>
               <h2 className="h2">Formação<br /><span className="orange">acadêmica.</span></h2>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(250px,1fr))', gap: 40 }}>
@@ -482,14 +607,14 @@ export default function App() {
         {/* EMPREENDER */}
         <section id="entrepreneurship" style={{ padding: 'clamp(80px,12vw,160px) 20px', textAlign: 'center', background: 'radial-gradient(ellipse at center,rgba(242,68,5,.08),#020202 70%)' }}>
           <div className="reveal" style={{ maxWidth: 900, margin: '0 auto' }}>
-            <span className="pill" style={{ justifyContent: 'center' }}>Foco no horizonte</span>
+            <span className="pill" style={{ justifyContent: 'center' }}>Objetivo profissional</span>
             <h2 style={{ fontSize: 'clamp(2.5rem,7vw,6.5rem)', fontWeight: 900, letterSpacing: '-.04em', textTransform: 'uppercase', lineHeight: .92, marginBottom: 36 }}>
-              Quero transformar<br /><span className="text-gradient">sonhos em realidade.</span>
+              Empreendedorismo.
             </h2>
             <p className="lead" style={{ maxWidth: 560, margin: '0 auto 48px', color: '#ccc' }}>
               Meu objetivo é empreender unindo dados, tecnologia e gestão: encontrar problemas que valem a pena resolver e construir soluções sustentáveis. Se você tem uma ideia, ou quer aprender e construir junto, vamos conversar.
             </p>
-            <a href="#contact" className="btn btn-p" onClick={click}>Propor uma parceria <ArrowRight size={16} /></a>
+            <a href="#contact" className="btn btn-p" onClick={click}>Conversar sobre parceria <ArrowRight size={16} /></a>
           </div>
         </section>
 
@@ -498,8 +623,8 @@ export default function App() {
           <div className="container-aq" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,320px),1fr))', gap: 'clamp(40px,8vw,100px)' }}>
             <div className="reveal">
               <span className="pill">Contato</span>
-              <h2 className="h2" style={{ marginBottom: 24 }}>Vamos<br /><span className="orange">conversar.</span></h2>
-              <p className="lead" style={{ maxWidth: 380, marginBottom: 40 }}>Vaga, projeto ou ideia de negócio? Conte em poucas linhas e eu retorno.</p>
+              <h2 className="h2" style={{ marginBottom: 24 }}>Entre em<br /><span className="orange">contato.</span></h2>
+              <p className="lead" style={{ maxWidth: 380, marginBottom: 40 }}>Para oportunidades profissionais, projetos ou parcerias, envie sua mensagem.</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                   <div className="orange" style={{ width: 48, height: 48, background: '#050505', border: '1px solid rgba(255,255,255,.08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -550,7 +675,7 @@ export default function App() {
                 <label htmlFor="c-msg">Sua mensagem</label>
                 <textarea id="c-msg" name="message" required rows={4} className="input" style={{ resize: 'vertical' }} placeholder="Conte sobre a oportunidade, o projeto ou a ideia." />
               </div>
-              <button type="submit" className="btn btn-p" style={{ width: '100%' }}>Abrir no meu e-mail <ArrowRight size={16} /></button>
+              <button type="submit" className="btn btn-p" style={{ width: '100%' }}>Enviar e-mail <ArrowRight size={16} /></button>
               <p style={{ color: '#8a8a8a', fontSize: 12, textAlign: 'center', marginTop: 16, lineHeight: 1.6 }}>
                 O botão abre seu aplicativo de e-mail com a mensagem preenchida. O envio é feito por você.
               </p>
@@ -571,7 +696,7 @@ export default function App() {
               <nav aria-label="Navegar">
                 <h4 className="lbl" style={{ marginBottom: 20 }}>Navegar</h4>
                 <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 14 }}>
-                  {[['#about', 'Sobre mim'], ['#cases', 'Projetos'], ['#expertise', 'Competências'], ['#work', 'Trajetória'], ['#education', 'Formação'], ['#contact', 'Contato']].map(([h, l]) => (
+                  {[['#about', 'Sobre mim'], ['#projects', 'Projetos'], ['#expertise', 'Competências'], ['#work', 'Trajetória'], ['#education', 'Formação'], ['#contact', 'Contato']].map(([h, l]) => (
                     <li key={h}><a href={h} className="link" onClick={click}>{l}</a></li>
                   ))}
                 </ul>
